@@ -48,6 +48,18 @@ The agent core does not exist at this time. Thus a valid invocation writes a mes
 
 This repo uses [lefthook](https://lefthook.dev). `bun install` installs the hooks. Before each commit, the `pre-commit` hook runs `bun run lint`, `bun run lint:ste`, `bun run format:check`, `bun run typecheck`, and `bun run test`. If one of them fails, Git does not make the commit.
 
+## CI
+
+`.github/workflows/ci.yml` contains the CI workflow. GitHub Actions runs it for each pull request and for each push to `main`. The workflow has one job, `ci`, that does these steps:
+
+1. It installs the Bun version that the `packageManager` field of `package.json` gives.
+2. It runs `bun install --frozen-lockfile`.
+3. It runs `bun run check`.
+4. It runs `bun run build`.
+5. It runs `./dist/tagent --version`.
+
+If one of the steps fails, the job fails. The last two steps find a binary that does not build or does not start. The tests do not use the binary.
+
 ## Binary
 
 `bun run build` writes one executable file to `dist/tagent`. The file contains the Bun runtime. The binary does not read `.env` or `bunfig.toml` from the directory where you run it.
