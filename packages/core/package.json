@@ -1,0 +1,11 @@
+{
+  "name": "@tagent/core",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "effect": "catalog:"
+  }
+}

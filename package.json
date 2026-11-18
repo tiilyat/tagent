@@ -1,0 +1,36 @@
+{
+  "name": "tagent",
+  "type": "module",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "catalog": {
+      "@effect/platform-bun": "^4.1.4",
+      "effect": "^4.1.4"
+    }
+  },
+  "scripts": {
+    "start": "bun packages/cli/src/main.ts",
+    "dev": "bun --watch packages/cli/src/main.ts",
+    "build": "bun build --compile --no-compile-autoload-dotenv --no-compile-autoload-bunfig packages/cli/src/main.ts --outfile dist/tagent",
+    "test": "bun test",
+    "typecheck": "bun check --no-script .",
+    "lint": "oxlint --deny-warnings",
+    "lint:ste": "ste-lint --max-warnings 0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "bun run lint && bun run lint:ste && bun run format:check && bun run typecheck && bun test",
+    "prepare": "lefthook install"
+  },
+  "devDependencies": {
+    "@mark1russell7/ste-lint": "0.4.0",
+    "@oxlint/plugins": "1.94.0",
+    "@types/bun": "^1.4.4",
+    "lefthook": "^2.2.2",
+    "oxlint": "1.94.0",
+    "prettier": "^3.10.1",
+    "typescript": "^7.0.2"
+  }
+}

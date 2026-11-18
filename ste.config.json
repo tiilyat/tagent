@@ -1,0 +1,6 @@
+{
+  "$schema": "./node_modules/@mark1russell7/ste-lint/ste.config.schema.json",
+  "include": ["*.md", "docs/**/*.md"],
+  "ignore": ["**/node_modules/**", "**/dist/**", "tools/oxlint/anti-slop/**"],
+  "technicalVerbs": ["run", "call", "return"]
+}
